@@ -1,0 +1,37 @@
+version: '2.1'
+services:
+  mongodb4:
+    image: mongo:latest
+    restart: always
+    environment:
+      - MONGODB_DATABASE="tasks"
+    volumes:
+      - ./volumes/mongodb:/data/db
+    ports:
+      - "27017:27017"
+    expose:
+      - "27017"
+    networks:
+      - tasker-service
+
+  zookeeper2:
+    image: confluentinc/cp-zookeeper:7.3.0
+    container_name: zookeeper2
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - '2181:2181'
+
+  rabbitmq1:
+    image: rabbitmq:3-management
+    hostname: rabbit1
+    container_name: rabbitmq1
+    restart: always
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+networks:
+  tasker-service:
+    driver: bridge

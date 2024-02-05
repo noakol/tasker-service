@@ -1,0 +1,60 @@
+
+########## create sum task
+POST http://localhost:3000/api/v1/tasker/create
+Content-Type: application/json
+
+{
+  "type": "sum",
+  "params": [1, 2, 3]
+}
+
+
+############# create concat task
+POST http://localhost:3000/api/v1/tasker/create
+Content-Type: application/json
+
+{
+  "type": "concat",
+  "params": ["connect", "strings", "in", "array"]
+}
+
+
+############# bad concat request
+POST http://localhost:3000/api/v1/tasker/create
+Content-Type: application/json
+
+{
+  "type": "concat",
+  "params": ""
+}
+
+############# bad type concate
+POST http://localhost:3000/api/v1/tasker/create
+Content-Type: application/json
+
+{
+  "type": "sometype",
+  "params": [1, 4]
+}
+
+############# bad mixed task concate
+POST http://localhost:3000/api/v1/tasker/create
+Content-Type: application/json
+
+{
+  "type": "concat",
+  "params": [1, "bjhb"]
+}
+
+############# bad request type is not matching to params
+POST http://localhost:3000/api/v1/tasker/create
+Content-Type: application/json
+
+{
+  "type": "concat",
+  "params": [1, 2]
+}
+
+############# Get value by uuid
+GET http://localhost:3000/api/v1/tasker/b480a64b-85d4-4e62-b8aa-2c2740defab1/
+
