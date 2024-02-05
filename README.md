@@ -8,7 +8,7 @@ POST /api/v1/tasker/create
 { type: <Task>, params: <Array<string | number>>}
 ```
 
-* The service which get two type of tasks:
+* Task types:
 
 ```node
 export enum Task {
@@ -58,11 +58,6 @@ $ npm run start:prod
 # unit tests
 $ npm run test
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
 ## TODO
